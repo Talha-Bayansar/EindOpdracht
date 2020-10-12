@@ -3,8 +3,11 @@ import styled from "@emotion/styled";
 import {Menu, ShoppingCart} from '@material-ui/icons';
 
 const StyledNavbar = styled.div`
+    position: fixed;
+    left: 0;
+    top: 0;
     height: 10vh;
-    width: 100%;
+    width: 100vw;
     background-color: #3e3e9f;
     display: flex;
     justify-content: space-evenly;

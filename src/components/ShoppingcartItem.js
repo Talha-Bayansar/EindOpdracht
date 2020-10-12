@@ -20,12 +20,12 @@ const StyledItem = styled.div`
 
 function ShoppingcartItem(props) {
 
-    const {product} = props;
+    const {product, deleteFromCart} = props;
 
     return (
         <StyledItem>
             <h1>{product.title}</h1>
-            <button><DeleteIcon /></button>
+            <button onClick={() => deleteFromCart(product)}><DeleteIcon /></button>
         </StyledItem>
     )
 }

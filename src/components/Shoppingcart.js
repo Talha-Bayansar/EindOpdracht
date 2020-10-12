@@ -11,6 +11,8 @@ const StyledShoppingcart = styled.div`
     right: 0;
     background-color: lightblue;
     padding: 1rem;
+    transform: ${props => props.isActive ? "translateX(0%)" : "translateX(100%)"};
+    transition: transform 0.3s ease-in-out;
 
     & button{
         background-color: transparent;
@@ -19,17 +21,21 @@ const StyledShoppingcart = styled.div`
         border: none;
         cursor: pointer;
     }
+
+    & h2{
+        margin-top: 3rem;
+    }
 `;
 
 function Shoppingcart(props) {
 
-    const {cart} = props;
+    const {cart, setIsCartActive, isCartActive, deleteFromCart} = props;
 
     return (
-        <StyledShoppingcart>
-            <button>x</button>
+        <StyledShoppingcart isActive={isCartActive}>
+            <button onClick={() => setIsCartActive(false)}>x</button>
             <div>
-                {cart.map(p => <ShoppingcartItem key={p.id} product={p} />)}
+                {cart.length === 0 ? <h2>Shopping cart is empty.</h2> : cart.map(p => <ShoppingcartItem deleteFromCart={deleteFromCart} key={p.id} product={p} />)}
             </div>
         </StyledShoppingcart>
       );

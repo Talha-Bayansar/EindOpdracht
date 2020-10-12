@@ -62,12 +62,15 @@ const StyledShoppingCart = styled(ShoppingCart)`
 `;
 
 function Navbar(props) {
+
+    const {setIsCartActive} = props;
+
     return (
         <StyledNavbar>
             <StyledMenu />
             <h1>Web Shop</h1>
             <div>
-                <StyledShoppingCart />
+                <StyledShoppingCart onClick={() => setIsCartActive(true)} />
                 <button>Login</button>
             </div>
             

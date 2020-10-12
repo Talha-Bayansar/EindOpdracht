@@ -13,6 +13,7 @@ const StyledApp = styled.div`
 function App() {
 
   const [cart, setCart] = useState([]);
+  const [isCartActive, setIsCartActive] = useState(true);
 
   const isInCart = (product) => {
     return product && cart.find(p => p.id === product.id);
@@ -29,10 +30,15 @@ function App() {
     setCart(newArray);
   }
 
+  const deleteFromCart = (product) => {
+    let newArray = cart.filter(p => p.id !== product.id);
+    setCart(newArray);
+  }
+
   return (
     <StyledApp>
-      <Navbar />
-      <Shoppingcart cart={cart} />
+      <Navbar setIsCartActive={setIsCartActive} />
+      <Shoppingcart deleteFromCart={deleteFromCart} setIsCartActive={setIsCartActive} isCartActive={isCartActive} cart={cart} />
       <ContentProducts addToCart={addToCart} data={products_data} />
     </StyledApp>
   );

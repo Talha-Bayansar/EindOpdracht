@@ -33,14 +33,14 @@ const StyledProduct = styled.div`
 
 function Product(props) {
 
-    const {product} = props;
+    const {product, addToCart} = props;
 
     return (
         <StyledProduct>
             <img src={product.imgUrl} alt={product.title}/>
             <div>
                 <h2>{product.title}</h2>
-                <button>{product.price}&euro;</button>
+                <button onClick={() => addToCart(product)}>{product.price}&euro;</button>
             </div>
         </StyledProduct>
     )

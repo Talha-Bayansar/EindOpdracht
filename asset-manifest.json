@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Talha-Bayansar.github.io/EindOpdracht/static/css/main.5bbf410f.chunk.css",
+    "main.js": "/Talha-Bayansar.github.io/EindOpdracht/static/js/main.53c451fb.chunk.js",
+    "main.js.map": "/Talha-Bayansar.github.io/EindOpdracht/static/js/main.53c451fb.chunk.js.map",
+    "runtime-main.js": "/Talha-Bayansar.github.io/EindOpdracht/static/js/runtime-main.8044d5fe.js",
+    "runtime-main.js.map": "/Talha-Bayansar.github.io/EindOpdracht/static/js/runtime-main.8044d5fe.js.map",
+    "static/js/2.7b19f7dc.chunk.js": "/Talha-Bayansar.github.io/EindOpdracht/static/js/2.7b19f7dc.chunk.js",
+    "static/js/2.7b19f7dc.chunk.js.map": "/Talha-Bayansar.github.io/EindOpdracht/static/js/2.7b19f7dc.chunk.js.map",
+    "index.html": "/Talha-Bayansar.github.io/EindOpdracht/index.html",
+    "precache-manifest.f09181a93d5e40e096a0bcfb8553fb83.js": "/Talha-Bayansar.github.io/EindOpdracht/precache-manifest.f09181a93d5e40e096a0bcfb8553fb83.js",
+    "service-worker.js": "/Talha-Bayansar.github.io/EindOpdracht/service-worker.js",
+    "static/css/main.5bbf410f.chunk.css.map": "/Talha-Bayansar.github.io/EindOpdracht/static/css/main.5bbf410f.chunk.css.map",
+    "static/js/2.7b19f7dc.chunk.js.LICENSE.txt": "/Talha-Bayansar.github.io/EindOpdracht/static/js/2.7b19f7dc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8044d5fe.js",
+    "static/js/2.7b19f7dc.chunk.js",
+    "static/css/main.5bbf410f.chunk.css",
+    "static/js/main.53c451fb.chunk.js"
+  ]
+}

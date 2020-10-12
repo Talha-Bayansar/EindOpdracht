@@ -13,7 +13,7 @@ const StyledApp = styled.div`
 function App() {
 
   const [cart, setCart] = useState([]);
-  const [isCartActive, setIsCartActive] = useState(true);
+  const [isCartActive, setIsCartActive] = useState(false);
 
   const isInCart = (product) => {
     return product && cart.find(p => p.id === product.id);

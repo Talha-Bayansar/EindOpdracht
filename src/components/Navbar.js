@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import {Menu, ShoppingCart} from '@material-ui/icons';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 const StyledNavbar = styled.div`
     position: fixed;

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import Product from './Product';
 import ShoppingcartItem from './ShoppingcartItem';
 
 const StyledShoppingcart = styled.div`

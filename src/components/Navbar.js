@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Menu, ShoppingCart } from "@material-ui/icons";
 import { useCartContext } from "../contexts/cart_context";
@@ -59,16 +59,17 @@ const StyledButton = styled.button`
 
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <StyledNavbar>
-      <StyledMenu />
+      <StyledMenu onClick={() => setIsActive(!isActive)} />
       <h1>Web Shop</h1>
       <div>
         <StyledShoppingCart onClick={() => setIsCartActive(true)} />
         <StyledButton>Login</StyledButton>
       </div>
-      <Sidebar />
+      <Sidebar isActive={isActive} setIsActive={setIsActive} />
     </StyledNavbar>
   );
 }

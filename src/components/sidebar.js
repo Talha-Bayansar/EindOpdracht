@@ -6,7 +6,8 @@ const StyledSidebar = styled.div`
   left: 0;
   top: 0;
   background-color: #3e3e9f;
-  transform: translateX(0%);
+  transform: ${(props) =>
+    props.visible ? "translateX(0%)" : "translateX(-100%)"};
   transition: transform 0.3s ease-in-out;
   width: 40vw;
   height: 100vh;
@@ -39,10 +40,12 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-function Sidebar() {
+function Sidebar(props) {
+  const { isActive, setIsActive } = props;
+
   return (
-    <StyledSidebar>
-      <StyledButton>x</StyledButton>
+    <StyledSidebar visible={isActive}>
+      <StyledButton onClick={() => setIsActive(!isActive)}>x</StyledButton>
       <div>
         <a href="/">Home</a>
         <a href="/">Products</a>

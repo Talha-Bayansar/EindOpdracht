@@ -10,10 +10,11 @@ const StyledNavbar = styled.div`
   top: 0;
   height: 10vh;
   width: 100vw;
-  background-color: #3e3e9f;
+  background-color: #4384e0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 1;
 
   & > h1 {
     cursor: pointer;
@@ -46,7 +47,7 @@ const StyledShoppingCart = styled(ShoppingCart)`
 `;
 
 const StyledButton = styled.button`
-  background-color: lightblue;
+  background-color: #3e3e9f;
   border: none;
   border-radius: 5px;
   cursor: pointer;

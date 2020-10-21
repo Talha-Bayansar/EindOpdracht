@@ -9,11 +9,12 @@ const StyledShoppingcart = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  background-color: lightblue;
+  background-color: #3e3e9f;
   padding: 1rem;
   transform: ${(props) =>
     props.isActive ? "translateX(0%)" : "translateX(100%)"};
   transition: transform 0.3s ease-in-out;
+  z-index: 2;
 
   & button {
     background-color: transparent;

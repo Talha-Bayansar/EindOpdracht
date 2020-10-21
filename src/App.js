@@ -6,6 +6,7 @@ import { products_data } from "./data/products_data";
 import styled from "@emotion/styled";
 import Shoppingcart from "./components/shopping_cart";
 import { CartProvider, useCartContext } from "./contexts/cart_context";
+import Footer from "./components/footer";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -38,6 +39,7 @@ function ProvidedApp() {
       <Navbar />
       <Shoppingcart deleteFromCart={deleteFromCart} />
       <ContentProducts addToCart={addToCart} data={products_data} />
+      <Footer />
     </StyledApp>
   );
 }

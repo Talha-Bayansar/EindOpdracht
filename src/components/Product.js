@@ -20,7 +20,7 @@ const StyledProduct = styled.div`
     margin-bottom: 1rem;
 
     & > button {
-      background-color: #3e3e9f;
+      background-color: #4384e0;
       border: none;
       border-radius: 3px;
       padding: 5px 10px;

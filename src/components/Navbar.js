@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Menu, ShoppingCart } from "@material-ui/icons";
 import { useCartContext } from "../contexts/cart_context";
+import Sidebar from "./sidebar";
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -25,18 +26,6 @@ const StyledNavbar = styled.div`
   & > div {
     display: flex;
     align-items: center;
-
-    & button {
-      background-color: lightblue;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      padding: 10px 20px;
-      font-size: 1rem;
-      letter-spacing: 3px;
-      margin-left: 3rem;
-      font-weight: 500;
-    }
   }
 `;
 
@@ -56,6 +45,18 @@ const StyledShoppingCart = styled(ShoppingCart)`
   }
 `;
 
+const StyledButton = styled.button`
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  margin-left: 3rem;
+  font-weight: 500;
+`;
+
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
 
@@ -65,8 +66,9 @@ function Navbar(props) {
       <h1>Web Shop</h1>
       <div>
         <StyledShoppingCart onClick={() => setIsCartActive(true)} />
-        <button>Login</button>
+        <StyledButton>Login</StyledButton>
       </div>
+      <Sidebar />
     </StyledNavbar>
   );
 }

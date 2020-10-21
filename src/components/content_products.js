@@ -14,6 +14,7 @@ function ContentProducts(props) {
 
   return (
     <StyledContentProducts>
+      {/* dit kan omgezet worden in props.children voor specificatie redenen */}
       {data.map((p) => (
         <Product addToCart={addToCart} key={p.id} product={p} />
       ))}

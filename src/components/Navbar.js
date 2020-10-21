@@ -58,16 +58,36 @@ const StyledButton = styled.button`
   font-weight: 500;
 `;
 
+const StyledCount = styled.div`
+  position: relative;
+
+  & > span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    padding: 0 4px;
+    font-size: 10px;
+    right: -5px;
+    top: -5px;
+    font-weight: 700;
+  }
+`;
+
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
   const [isActive, setIsActive] = useState(false);
+  const { cart } = useCartContext();
 
   return (
     <StyledNavbar>
       <StyledMenu onClick={() => setIsActive(!isActive)} />
       <h1>Web Shop</h1>
       <div>
-        <StyledShoppingCart onClick={() => setIsCartActive(true)} />
+        <StyledCount count={String(cart.length)}>
+          {cart.length > 0 && <span>{cart.length}</span>}
+          <StyledShoppingCart onClick={() => setIsCartActive(true)} />
+        </StyledCount>
         <StyledButton>Login</StyledButton>
       </div>
       <Sidebar isActive={isActive} setIsActive={setIsActive} />

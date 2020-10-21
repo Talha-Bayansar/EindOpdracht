@@ -28,6 +28,10 @@ const StyledProduct = styled.div`
       cursor: pointer;
       outline: none;
     }
+
+    & > button:hover {
+      background-color: #3e3e9f;
+    }
   }
 `;
 

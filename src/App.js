@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
-import './App.css';
-import ContentProducts from './components/ContentProducts';
-import Navbar from './components/Navbar';
+import React from "react";
+import "./App.css";
+import ContentProducts from "./components/content_products";
+import Navbar from "./components/navbar";
 import { products_data } from "./data/products_data";
 import styled from "@emotion/styled";
-import Shoppingcart from './components/Shoppingcart';
+import Shoppingcart from "./components/shopping_cart";
+import { CartProvider, useCartContext } from "./contexts/cart_context";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
 `;
 
-function App() {
-
-  const [cart, setCart] = useState([]);
-  const [isCartActive, setIsCartActive] = useState(false);
-
+function ProvidedApp() {
+  const { cart, setCart } = useCartContext();
   const isInCart = (product) => {
-    return product && cart.find(p => p.id === product.id);
-  }
+    return product && cart.find((p) => p.id === product.id);
+  };
 
   const addToCart = (product) => {
     let newArray = cart;
@@ -28,19 +26,27 @@ function App() {
     }
     console.log(newArray);
     setCart(newArray);
-  }
+  };
 
   const deleteFromCart = (product) => {
-    let newArray = cart.filter(p => p.id !== product.id);
+    let newArray = cart.filter((p) => p.id !== product.id);
     setCart(newArray);
-  }
+  };
 
   return (
     <StyledApp>
-      <Navbar setIsCartActive={setIsCartActive} />
-      <Shoppingcart deleteFromCart={deleteFromCart} setIsCartActive={setIsCartActive} isCartActive={isCartActive} cart={cart} />
+      <Navbar />
+      <Shoppingcart deleteFromCart={deleteFromCart} />
       <ContentProducts addToCart={addToCart} data={products_data} />
     </StyledApp>
+  );
+}
+
+function App() {
+  return (
+    <CartProvider>
+      <ProvidedApp />
+    </CartProvider>
   );
 }
 

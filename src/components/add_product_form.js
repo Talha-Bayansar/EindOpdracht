@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { useAllProductsContext } from "../contexts/all_products_context";
 
 const StyledProductForm = styled.section`
   position: fixed;
@@ -36,13 +37,37 @@ const StyledButtons = styled.div`
 
 function AddProductForm(props) {
   const { addProductClicked, setAddProductClicked } = props;
-  const [url, setUrl] = useState();
-  const [title, setTitle] = useState();
-  const [price, setPrice] = useState();
-  const [category, setCategory] = useState();
+  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const { allProducts, setAllProducts } = useAllProductsContext();
+
+  const getIdFromLastProduct = () => {
+    return allProducts.map((p) => p.id).sort((a, b) => a + b)[0];
+  };
 
   const createProduct = () => {
-    const product = {};
+    if (title !== "" && url !== "" && category !== "" && price !== "") {
+      const product = {
+        id: getIdFromLastProduct() + 1,
+        title: title,
+        imgUrl: url,
+        price: price,
+        category: category,
+      };
+      console.log(product.id);
+      setAllProducts([...allProducts, product]);
+    } else {
+      alert("Every field must be filled.");
+    }
+  };
+
+  const clearInputFields = () => {
+    setUrl("");
+    setTitle("");
+    setPrice("");
+    setCategory("");
   };
   return (
     <StyledProductForm visible={addProductClicked}>
@@ -50,26 +75,38 @@ function AddProductForm(props) {
         <input
           type="text"
           placeholder="URL Picture"
+          value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
         <input
           type="text"
           placeholder="Title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
           type="text"
           placeholder="Price"
+          value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
         <input
           type="text"
           placeholder="Category"
+          value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
         <StyledButtons>
           <button onClick={() => setAddProductClicked(false)}>Cancel</button>
-          <button onClick={() => createProduct()}>Confirm</button>
+          <button
+            onClick={() => {
+              createProduct();
+              setAddProductClicked(false);
+              clearInputFields();
+            }}
+          >
+            Confirm
+          </button>
         </StyledButtons>
       </StyledForm>
     </StyledProductForm>

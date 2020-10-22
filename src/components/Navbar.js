@@ -4,6 +4,7 @@ import { Menu, ShoppingCart } from "@material-ui/icons";
 import { useCartContext } from "../contexts/cart_context";
 import Sidebar from "./sidebar";
 import LoginForm from "./login_form";
+import AddProductForm from "./add_product_form";
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -61,6 +62,8 @@ const StyledButton = styled.button`
 
 const StyledCount = styled.div`
   position: relative;
+  display: flex;
+  align-items: center;
 
   & > span {
     position: absolute;
@@ -75,11 +78,23 @@ const StyledCount = styled.div`
   }
 `;
 
+const StyledAddButton = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+
+  &:hover {
+    color: grey;
+  }
+`;
+
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
   const [isActive, setIsActive] = useState(false);
   const [loginClicked, setLoginClicked] = useState(false);
   const { cart } = useCartContext();
+  const [addProductClicked, setAddProductClicked] = useState(false);
 
   return (
     <StyledNavbar>
@@ -94,10 +109,17 @@ function Navbar(props) {
           Login
         </StyledButton>
       </div>
+      <StyledAddButton onClick={() => setAddProductClicked(!addProductClicked)}>
+        +
+      </StyledAddButton>
       <Sidebar isActive={isActive} setIsActive={setIsActive} />
       <LoginForm
         loginClicked={loginClicked}
         setLoginClicked={setLoginClicked}
+      />
+      <AddProductForm
+        addProductClicked={addProductClicked}
+        setAddProductClicked={setAddProductClicked}
       />
     </StyledNavbar>
   );

@@ -2,11 +2,11 @@ import React from "react";
 import "./App.css";
 import ContentProducts from "./components/content_products";
 import Navbar from "./components/navbar";
-import { products_data } from "./data/products_data";
 import styled from "@emotion/styled";
 import Shoppingcart from "./components/shopping_cart";
 import { CartProvider, useCartContext } from "./contexts/cart_context";
 import Footer from "./components/footer";
+import { AllProductsProvider } from "./contexts/all_products_context";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -25,7 +25,6 @@ function ProvidedApp() {
     } else {
       newArray = [...cart, product];
     }
-    console.log(newArray);
     setCart(newArray);
   };
 
@@ -38,7 +37,7 @@ function ProvidedApp() {
     <StyledApp>
       <Navbar />
       <Shoppingcart deleteFromCart={deleteFromCart} />
-      <ContentProducts addToCart={addToCart} data={products_data} />
+      <ContentProducts addToCart={addToCart} />
       <Footer />
     </StyledApp>
   );
@@ -47,7 +46,9 @@ function ProvidedApp() {
 function App() {
   return (
     <CartProvider>
-      <ProvidedApp />
+      <AllProductsProvider>
+        <ProvidedApp />
+      </AllProductsProvider>
     </CartProvider>
   );
 }

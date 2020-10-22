@@ -9,7 +9,7 @@ const StyledSidebar = styled.div`
   transform: ${(props) =>
     props.visible ? "translateX(0%)" : "translateX(-100%)"};
   transition: transform 0.3s ease-in-out;
-  width: 40vw;
+  width: 30vw;
   height: 100vh;
 
   & > div {

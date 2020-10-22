@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Menu, ShoppingCart } from "@material-ui/icons";
 import { useCartContext } from "../contexts/cart_context";
 import Sidebar from "./sidebar";
+import LoginForm from "./login_form";
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -77,6 +78,7 @@ const StyledCount = styled.div`
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
   const [isActive, setIsActive] = useState(false);
+  const [loginClicked, setLoginClicked] = useState(false);
   const { cart } = useCartContext();
 
   return (
@@ -88,9 +90,15 @@ function Navbar(props) {
           {cart.length > 0 && <span>{cart.length}</span>}
           <StyledShoppingCart onClick={() => setIsCartActive(true)} />
         </StyledCount>
-        <StyledButton>Login</StyledButton>
+        <StyledButton onClick={() => setLoginClicked(!loginClicked)}>
+          Login
+        </StyledButton>
       </div>
       <Sidebar isActive={isActive} setIsActive={setIsActive} />
+      <LoginForm
+        loginClicked={loginClicked}
+        setLoginClicked={setLoginClicked}
+      />
     </StyledNavbar>
   );
 }

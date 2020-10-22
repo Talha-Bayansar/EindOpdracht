@@ -18,7 +18,6 @@ const StyledShoppingcart = styled.div`
 
   & button {
     background-color: transparent;
-    font-weight: 600;
     font-size: 2rem;
     border: none;
     cursor: pointer;

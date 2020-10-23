@@ -20,9 +20,7 @@ function ProvidedApp() {
 
   const addToCart = (product) => {
     let newArray = cart;
-    if (isInCart(product)) {
-      newArray = cart;
-    } else {
+    if (!isInCart(product)) {
       newArray = [...cart, product];
     }
     setCart(newArray);

@@ -39,9 +39,8 @@ const StyledProductDescription = styled.div`
   }
 
   & > div {
-    position: absolute;
-    bottom: 3rem;
     display: flex;
+    margin-top: 5rem;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -50,8 +49,8 @@ const StyledProductDescription = styled.div`
       background-color: #4384e0;
       border: none;
       border-radius: 3px;
-      padding: 5px 10px;
-      font-size: 1rem;
+      padding: 7px 14px;
+      font-size: 1.2rem;
       cursor: pointer;
       outline: none;
 

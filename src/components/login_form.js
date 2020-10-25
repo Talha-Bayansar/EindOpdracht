@@ -14,14 +14,15 @@ const StyledLoginComponent = styled.section`
 const StyledLoginForm = styled.div`
   position: fixed;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 500px;
-  height: 200px;
+  height: 300px;
   top: 50%;
   left: 50%;
   margin-left: -250px;
-  margin-top: -100px;
+  margin-top: -150px;
   border: 5px solid #ccc;
   background-color: #fff;
   z-index: 6;
@@ -38,7 +39,7 @@ const StyledLoginForm = styled.div`
 
   & > form {
     display: flex;
-    height: 80%;
+    height: 60%;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -51,7 +52,7 @@ const StyledLoginForm = styled.div`
       width: 100%;
     }
 
-    & > button {
+    & button {
       padding: 10px 20px;
       font-size: 1rem;
       background-color: #4384e0;
@@ -65,6 +66,13 @@ const StyledLoginForm = styled.div`
       }
     }
   }
+`;
+
+const StyledButtons = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledOverlay = styled.div`
@@ -82,6 +90,7 @@ function LoginForm(props) {
       <StyledOverlay onClick={() => setLoginClicked(!loginClicked)} />
       <StyledLoginForm>
         <button onClick={() => setLoginClicked(false)}>x</button>
+        <h3>Do you have an account?</h3>
         <form action="login">
           <input
             type="email"
@@ -95,7 +104,10 @@ function LoginForm(props) {
             id="password"
             placeholder="Password"
           />
-          <button type="submit">Login</button>
+          <StyledButtons>
+            <button type="submit">Sign in</button>
+            <button type="submit">Sign Up</button>
+          </StyledButtons>
         </form>
       </StyledLoginForm>
     </StyledLoginComponent>

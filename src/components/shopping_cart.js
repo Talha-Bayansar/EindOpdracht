@@ -11,6 +11,11 @@ const StyledShoppingcart = styled.div`
   }
 `;
 
+const StyledHeader = styled.h1`
+  font-size: 3rem;
+  display: block;
+`;
+
 function Shoppingcart(props) {
   const { deleteFromCart } = props;
   const { cart, isCartActive } = useCartContext();
@@ -18,6 +23,7 @@ function Shoppingcart(props) {
   return (
     <StyledShoppingcart isActive={isCartActive}>
       <div>
+        <StyledHeader>Shopping Cart</StyledHeader>
         {cart.length === 0 ? (
           <h2>Shopping cart is empty.</h2>
         ) : (

@@ -5,6 +5,7 @@ import { useCartContext } from "../contexts/cart_context";
 import Sidebar from "./sidebar";
 import LoginForm from "./login_form";
 import AddProductForm from "./add_product_form";
+import { Link } from "react-router-dom";
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -17,14 +18,6 @@ const StyledNavbar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   z-index: 5;
-
-  & > h1 {
-    cursor: pointer;
-
-    &:hover {
-      color: #ccbdbd;
-    }
-  }
 
   & > div {
     display: flex;
@@ -42,6 +35,18 @@ const StyledMenu = styled(Menu)`
 
 const StyledShoppingCart = styled(ShoppingCart)`
   cursor: pointer;
+
+  &:hover {
+    color: #ccbdbd;
+  }
+`;
+
+const StyledLogo = styled(Link)`
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
 
   &:hover {
     color: #ccbdbd;
@@ -94,6 +99,11 @@ const StyledAddButton = styled.button`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 function Navbar(props) {
   const { setIsCartActive } = useCartContext();
   const [isActive, setIsActive] = useState(false);
@@ -104,11 +114,13 @@ function Navbar(props) {
   return (
     <StyledNavbar>
       <StyledMenu onClick={() => setIsActive(!isActive)} />
-      <h1>Web Shop</h1>
+      <StyledLogo to="/">Web Shop</StyledLogo>
       <div>
         <StyledCount count={String(cart.length)}>
           {cart.length > 0 && <span>{cart.length}</span>}
-          <StyledShoppingCart onClick={() => setIsCartActive(true)} />
+          <StyledLink to="/checkout">
+            <StyledShoppingCart onClick={() => setIsCartActive(true)} />
+          </StyledLink>
         </StyledCount>
         <StyledButton onClick={() => setLoginClicked(!loginClicked)}>
           Login

@@ -51,9 +51,9 @@ function ProvidedApp() {
                 <Product addToCart={addToCart} key={p.id} product={p} />
               ))}
             </ContentProducts>
+            <Footer />
           </Route>
         </Switch>
-        <Footer />
       </StyledApp>
     </HashRouter>
   );

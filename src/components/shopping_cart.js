@@ -13,7 +13,7 @@ const StyledShoppingcart = styled.div`
 
 function Shoppingcart(props) {
   const { deleteFromCart } = props;
-  const { cart, setIsCartActive, isCartActive } = useCartContext();
+  const { cart, isCartActive } = useCartContext();
 
   return (
     <StyledShoppingcart isActive={isCartActive}>

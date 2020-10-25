@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import ProductDescription from "./product_description";
 
 const StyledProduct = styled.div`
-  background-color: #c1c1c1;
+  background-color: #eaeaea;
   box-shadow: 0px 0px 5px 2px black;
   border-radius: 5px;
 

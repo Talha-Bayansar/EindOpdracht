@@ -5,7 +5,7 @@ const StyledSidebar = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #3e3e9f;
+  background-color: #4384e0;
 
   width: 100%;
   height: 100%;
@@ -21,6 +21,7 @@ const StyledSidebar = styled.div`
     justify-content: space-evenly;
     align-items: center;
     & > a {
+      font-size: 1.5rem;
       text-decoration: none;
       color: white;
 

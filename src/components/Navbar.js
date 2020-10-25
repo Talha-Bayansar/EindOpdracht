@@ -16,13 +16,13 @@ const StyledNavbar = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  z-index: 1;
+  z-index: 5;
 
   & > h1 {
     cursor: pointer;
 
     &:hover {
-      color: grey;
+      color: #ccbdbd;
     }
   }
 
@@ -36,7 +36,7 @@ const StyledMenu = styled(Menu)`
   cursor: pointer;
 
   &:hover {
-    color: grey;
+    color: #ccbdbd;
   }
 `;
 
@@ -44,12 +44,12 @@ const StyledShoppingCart = styled(ShoppingCart)`
   cursor: pointer;
 
   &:hover {
-    color: grey;
+    color: #ccbdbd;
   }
 `;
 
 const StyledButton = styled.button`
-  background-color: #3e3e9f;
+  background-color: #7fcfff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -58,6 +58,11 @@ const StyledButton = styled.button`
   letter-spacing: 3px;
   margin-left: 3rem;
   font-weight: 500;
+
+  &:hover {
+    background-color: #6199bb;
+    color: white;
+  }
 `;
 
 const StyledCount = styled.div`
@@ -85,7 +90,7 @@ const StyledAddButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: grey;
+    color: #ccbdbd;
   }
 `;
 

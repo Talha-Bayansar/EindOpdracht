@@ -6,8 +6,26 @@ import { useAllProductsContext } from "../contexts/all_products_context";
 const StyledContentProducts = styled.div`
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem;
+
+  @media screen and (max-width: 1280px) {
+    & {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    & {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 function ContentProducts(props) {
@@ -17,6 +35,7 @@ function ContentProducts(props) {
   return (
     <StyledContentProducts>
       {/* dit kan omgezet worden in props.children voor specificatie redenen */}
+
       {allProducts.map((p) => (
         <Product addToCart={addToCart} key={p.id} product={p} />
       ))}

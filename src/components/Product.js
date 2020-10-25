@@ -30,7 +30,8 @@ const StyledProduct = styled.div`
     }
 
     & > button:hover {
-      background-color: #3e3e9f;
+      background-color: #6199bb;
+      color: white;
     }
   }
 `;

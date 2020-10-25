@@ -26,7 +26,7 @@ const StyledMedia = styled.div`
   width: 20%;
 
   & > *:hover {
-    color: grey;
+    color: #ccbdbd;
     cursor: pointer;
   }
 `;
@@ -40,7 +40,7 @@ const StyledLinks = styled.div`
   }
 
   & > a:hover {
-    color: grey;
+    color: #ccbdbd;
   }
 `;
 

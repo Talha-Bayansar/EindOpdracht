@@ -89,6 +89,12 @@ function LoginForm(props) {
             id="email"
             placeholder="email@email.com"
           />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
           <button type="submit">Login</button>
         </form>
       </StyledLoginForm>

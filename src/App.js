@@ -11,6 +11,7 @@ import {
   useAllProductsContext,
 } from "./contexts/all_products_context";
 import Product from "./components/product";
+import { Switch, Route, HashRouter } from "react-router-dom";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -37,16 +38,24 @@ function ProvidedApp() {
   };
 
   return (
-    <StyledApp>
-      <Navbar />
-      <Shoppingcart deleteFromCart={deleteFromCart} />
-      <ContentProducts>
-        {allProducts.map((p) => (
-          <Product addToCart={addToCart} key={p.id} product={p} />
-        ))}
-      </ContentProducts>
-      <Footer />
-    </StyledApp>
+    <HashRouter basename="/">
+      <StyledApp>
+        <Navbar />
+        <Switch>
+          <Route path="/checkout">
+            <Shoppingcart deleteFromCart={deleteFromCart} />
+          </Route>
+          <Route path={["/", "/home"]}>
+            <ContentProducts>
+              {allProducts.map((p) => (
+                <Product addToCart={addToCart} key={p.id} product={p} />
+              ))}
+            </ContentProducts>
+          </Route>
+        </Switch>
+        <Footer />
+      </StyledApp>
+    </HashRouter>
   );
 }
 

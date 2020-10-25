@@ -24,7 +24,7 @@ const StyledLoginForm = styled.div`
   margin-top: -100px;
   border: 5px solid #ccc;
   background-color: #fff;
-  z-index: 5;
+  z-index: 6;
 
   & > button {
     position: absolute;

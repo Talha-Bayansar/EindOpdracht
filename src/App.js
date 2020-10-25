@@ -6,7 +6,11 @@ import styled from "@emotion/styled";
 import Shoppingcart from "./components/shopping_cart";
 import { CartProvider, useCartContext } from "./contexts/cart_context";
 import Footer from "./components/footer";
-import { AllProductsProvider } from "./contexts/all_products_context";
+import {
+  AllProductsProvider,
+  useAllProductsContext,
+} from "./contexts/all_products_context";
+import Product from "./components/product";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -14,6 +18,7 @@ const StyledApp = styled.div`
 
 function ProvidedApp() {
   const { cart, setCart } = useCartContext();
+  const { allProducts } = useAllProductsContext();
   const isInCart = (product) => {
     return product && cart.find((p) => p.id === product.id);
   };
@@ -35,7 +40,11 @@ function ProvidedApp() {
     <StyledApp>
       <Navbar />
       <Shoppingcart deleteFromCart={deleteFromCart} />
-      <ContentProducts addToCart={addToCart} />
+      <ContentProducts>
+        {allProducts.map((p) => (
+          <Product addToCart={addToCart} key={p.id} product={p} />
+        ))}
+      </ContentProducts>
       <Footer />
     </StyledApp>
   );

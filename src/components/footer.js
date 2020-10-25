@@ -14,6 +14,7 @@ const StyledFooter = styled.div`
   margin-top: 1rem;
   left: 0;
   color: white;
+  z-index: -1;
 
   & > div {
     display: flex;

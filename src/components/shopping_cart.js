@@ -14,7 +14,7 @@ const StyledShoppingcart = styled.div`
   transform: ${(props) =>
     props.isActive ? "translateX(0%)" : "translateX(100%)"};
   transition: transform 0.3s ease-in-out;
-  z-index: 2;
+  z-index: 5;
 
   & button {
     background-color: transparent;

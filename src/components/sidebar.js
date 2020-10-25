@@ -6,10 +6,8 @@ const StyledSidebar = styled.div`
   left: 0;
   top: 0;
   background-color: #3e3e9f;
-  transform: ${(props) =>
-    props.visible ? "translateX(0%)" : "translateX(-100%)"};
-  transition: transform 0.3s ease-in-out;
-  width: 30%;
+
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -49,26 +47,30 @@ const StyledOverlay = styled.div`
   left: 0;
   top: 0;
   height: 100vh;
-  width: 100vw;
+  width: 200vw;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 4;
 `;
 
-const StyledDiv = styled.section`
+const StyledSection = styled.section`
   position: fixed;
+  left: 0;
+  top: 0;
   height: 100vh;
   width: 30vw;
   z-index: 5;
-  display: flex;
   justify-content: center;
   align-items: center;
+  transform: ${(props) =>
+    props.visible ? "translateX(0%)" : "translateX(-100%)"};
+  transition: transform 0.3s ease-in-out;
 `;
 
 function Sidebar(props) {
   const { isActive, setIsActive } = props;
 
   return (
-    <StyledDiv visible={isActive}>
+    <StyledSection visible={isActive}>
       <StyledOverlay
         visible={isActive}
         onClick={() => setIsActive(!isActive)}
@@ -81,7 +83,7 @@ function Sidebar(props) {
           <a href="/">Contact</a>
         </div>
       </StyledSidebar>
-    </StyledDiv>
+    </StyledSection>
   );
 }
 

@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Product from "./product";
-import { useAllProductsContext } from "../contexts/all_products_context";
 
 const StyledContentProducts = styled.div`
-  margin-top: 3rem;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem;
@@ -28,18 +27,26 @@ const StyledContentProducts = styled.div`
   }
 `;
 
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  & > h1 {
+    font-size: 2.5rem;
+    margin: 3rem;
+  }
+`;
+
 function ContentProducts(props) {
   const { addToCart } = props;
-  const { allProducts } = useAllProductsContext();
 
   return (
-    <StyledContentProducts>
-      {/* dit kan omgezet worden in props.children voor specificatie redenen */}
-
-      {allProducts.map((p) => (
-        <Product addToCart={addToCart} key={p.id} product={p} />
-      ))}
-    </StyledContentProducts>
+    <StyledSection>
+      <h1>Products</h1>
+      <StyledContentProducts>{props.children}</StyledContentProducts>
+    </StyledSection>
   );
 }
 

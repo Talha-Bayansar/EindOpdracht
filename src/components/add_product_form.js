@@ -19,20 +19,45 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   width: 500px;
-  height: 200px;
+  height: 500px;
   top: 50%;
   left: 50%;
   margin-left: -250px;
-  margin-top: -100px;
+  margin-top: -250px;
   border: 5px solid #ccc;
   background-color: #fff;
   z-index: 5;
+
+  & input,
+  & textarea {
+    padding: 10px 10px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 70%;
+  }
 `;
 
 const StyledButtons = styled.div`
   display: flex;
-  justify-content: flex-end;
+  width: 70%;
+  justify-content: space-around;
   align-items: center;
+
+  & button {
+    background-color: #4384e0;
+    border: none;
+    border-radius: 3px;
+    padding: 7px 14px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background-color: #6199bb;
+      color: white;
+    }
+  }
 `;
 
 function AddProductForm(props) {
@@ -41,6 +66,7 @@ function AddProductForm(props) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
   const { allProducts, setAllProducts } = useAllProductsContext();
 
   const getIdFromLastProduct = () => {
@@ -48,12 +74,19 @@ function AddProductForm(props) {
   };
 
   const createProduct = () => {
-    if (title !== "" && url !== "" && category !== "" && price !== "") {
+    if (
+      title !== "" &&
+      url !== "" &&
+      category !== "" &&
+      price !== "" &&
+      description !== ""
+    ) {
       const product = {
         id: getIdFromLastProduct() + 1,
         title: title,
         imgUrl: url,
         price: price,
+        description: description,
         category: category,
       };
       console.log(product.id);
@@ -67,13 +100,15 @@ function AddProductForm(props) {
     setUrl("");
     setTitle("");
     setPrice("");
+    setDescription("");
     setCategory("");
   };
   return (
     <StyledProductForm visible={addProductClicked}>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
+        <h2>Product Info:</h2>
         <input
-          type="text"
+          type="url"
           placeholder="URL Picture"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
@@ -95,6 +130,12 @@ function AddProductForm(props) {
           placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+        />
+        <textarea
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <StyledButtons>
           <button onClick={() => setAddProductClicked(false)}>Cancel</button>

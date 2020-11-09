@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "@emotion/styled";
+import { useAuth } from "../contexts/auth_context";
 
 const StyledLoginComponent = styled.section`
   position: fixed;
@@ -85,6 +86,10 @@ const StyledOverlay = styled.div`
 
 function LoginForm(props) {
   const { loginClicked, setLoginClicked } = props;
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { signup } = useAuth();
+
   return (
     <StyledLoginComponent visible={loginClicked}>
       <StyledOverlay onClick={() => setLoginClicked(!loginClicked)} />
@@ -97,12 +102,16 @@ function LoginForm(props) {
             name="email"
             id="email"
             placeholder="email@email.com"
+            required
+            ref={emailRef}
           />
           <input
             type="password"
             name="password"
             id="password"
             placeholder="Password"
+            required
+            ref={passwordRef}
           />
           <StyledButtons>
             <button type="submit">Sign in</button>

@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "@emotion/styled";
-import { useAuth } from "../contexts/auth_context";
+import { useAuthContext } from "../contexts/auth_context";
+import Error from "./error";
 
 const StyledLoginComponent = styled.section`
   position: fixed;
@@ -88,7 +89,21 @@ function LoginForm(props) {
   const { loginClicked, setLoginClicked } = props;
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuthContext();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create an account.");
+    }
+    setLoading(false);
+  };
 
   return (
     <StyledLoginComponent visible={loginClicked}>
@@ -96,10 +111,11 @@ function LoginForm(props) {
       <StyledLoginForm>
         <button onClick={() => setLoginClicked(false)}>x</button>
         <h3>Do you have an account?</h3>
-        <form action="login">
+        {currentUser && currentUser.email}
+        {error && <Error>{error}</Error>}
+        <form action="login" onSubmit={handleSubmit}>
           <input
             type="email"
-            name="email"
             id="email"
             placeholder="email@email.com"
             required
@@ -107,15 +123,18 @@ function LoginForm(props) {
           />
           <input
             type="password"
-            name="password"
             id="password"
             placeholder="Password"
             required
             ref={passwordRef}
           />
           <StyledButtons>
-            <button type="submit">Sign in</button>
-            <button type="submit">Sign Up</button>
+            <button type="submit" disabled={loading}>
+              Sign in
+            </button>
+            <button type="submit" disabled={loading}>
+              Sign Up
+            </button>
           </StyledButtons>
         </form>
       </StyledLoginForm>

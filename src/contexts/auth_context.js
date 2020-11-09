@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../services/firebase";
 
 const AuthContext = createContext();
@@ -17,6 +17,7 @@ export default function AuthProvider(props) {
 
     return unsubscribe;
   }, []);
+
   const api = {
     currentUser,
     signup,

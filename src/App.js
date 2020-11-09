@@ -12,6 +12,7 @@ import {
 } from "./contexts/all_products_context";
 import Product from "./components/product";
 import { Switch, Route, HashRouter } from "react-router-dom";
+import AuthProvider from "./contexts/auth_context";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -61,11 +62,13 @@ function ProvidedApp() {
 
 function App() {
   return (
-    <CartProvider>
-      <AllProductsProvider>
-        <ProvidedApp />
-      </AllProductsProvider>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <AllProductsProvider>
+          <ProvidedApp />
+        </AllProductsProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 

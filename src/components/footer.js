@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Twitter, Facebook, Instagram } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const StyledFooter = styled.div`
   position: absolute;
@@ -49,9 +50,10 @@ function Footer() {
   return (
     <StyledFooter>
       <StyledLinks>
-        <a href="/">Home</a>
-        <a href="/">Products</a>
-        <a href="/">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/myproducts">My Products</Link>
+        <Link to="/">Contact</Link>
       </StyledLinks>
       <StyledMedia>
         <Twitter />

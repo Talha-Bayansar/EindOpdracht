@@ -89,19 +89,31 @@ function LoginForm(props) {
   const { loginClicked, setLoginClicked } = props;
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { signup, currentUser } = useAuthContext();
+  const { signup, login } = useAuthContext();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [newAccount, setNewAccount] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-    } catch {
-      setError("Failed to create an account.");
+    if (newAccount) {
+      try {
+        setError("");
+        setLoading(true);
+        await signup(emailRef.current.value, passwordRef.current.value);
+      } catch {
+        setError("Failed to create an account.");
+      }
+    } else {
+      try {
+        setError("");
+        setLoading(true);
+        await login(emailRef.current.value, passwordRef.current.value);
+      } catch {
+        setError("Failed to sign in.");
+      }
     }
+
     setLoading(false);
   };
 
@@ -111,7 +123,6 @@ function LoginForm(props) {
       <StyledLoginForm>
         <button onClick={() => setLoginClicked(false)}>x</button>
         <h3>Do you have an account?</h3>
-        {currentUser && currentUser.email}
         {error && <Error>{error}</Error>}
         <form action="login" onSubmit={handleSubmit}>
           <input
@@ -129,10 +140,18 @@ function LoginForm(props) {
             ref={passwordRef}
           />
           <StyledButtons>
-            <button type="submit" disabled={loading}>
+            <button
+              onClick={() => setNewAccount(false)}
+              type="submit"
+              disabled={loading}
+            >
               Sign in
             </button>
-            <button type="submit" disabled={loading}>
+            <button
+              onClick={() => setNewAccount(true)}
+              type="submit"
+              disabled={loading}
+            >
               Sign Up
             </button>
           </StyledButtons>

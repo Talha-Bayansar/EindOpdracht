@@ -5,14 +5,20 @@ const AuthContext = createContext();
 
 export default function AuthProvider(props) {
   const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   const signup = (email, password) => {
-    auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password);
+  };
+
+  const login = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
 
     return unsubscribe;
@@ -21,10 +27,13 @@ export default function AuthProvider(props) {
   const api = {
     currentUser,
     signup,
+    login,
   };
 
   return (
-    <AuthContext.Provider value={api}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider value={api}>
+      {!loading && props.children}
+    </AuthContext.Provider>
   );
 }
 

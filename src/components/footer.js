@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Twitter, Facebook, Instagram } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledFooter = styled.div`
   position: absolute;
@@ -47,12 +48,14 @@ const StyledLinks = styled.div`
 `;
 
 function Footer() {
+  const { currentUser } = useAuthContext();
+
   return (
     <StyledFooter>
       <StyledLinks>
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
-        <Link to="/myproducts">My Products</Link>
+        {currentUser !== null && <Link to="/myproducts">My Products</Link>}
         <Link to="/">Contact</Link>
       </StyledLinks>
       <StyledMedia>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledSidebar = styled.div`
   position: fixed;
@@ -70,6 +71,7 @@ const StyledSection = styled.section`
 
 function Sidebar(props) {
   const { isActive, setIsActive } = props;
+  const { currentUser } = useAuthContext();
 
   return (
     <StyledSection visible={isActive}>
@@ -82,7 +84,7 @@ function Sidebar(props) {
         <div>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
-          <Link to="/myproducts">My Products</Link>
+          {currentUser !== null && <Link to="/myproducts">My Products</Link>}
           <Link to="/">Contact</Link>
         </div>
       </StyledSidebar>

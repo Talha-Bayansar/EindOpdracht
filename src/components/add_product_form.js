@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useAllProductsContext } from "../contexts/all_products_context";
 import "firebase/firestore";
 import firebase from "../services/firebase";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledProductForm = styled.section`
   position: fixed;
@@ -69,6 +70,7 @@ function AddProductForm(props) {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
+  const { currentUser } = useAuthContext();
   // const { allProducts, setAllProducts } = useAllProductsContext();
 
   // const getIdFromLastProduct = () => {
@@ -87,6 +89,7 @@ function AddProductForm(props) {
         .firestore()
         .collection("products")
         .add({
+          uid: currentUser.uid,
           title: title,
           imgUrl: url,
           price: price,

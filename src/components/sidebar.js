@@ -58,7 +58,7 @@ const StyledSection = styled.section`
   left: 0;
   top: 0;
   height: 100vh;
-  width: 30vw;
+  width: 50vw;
   z-index: 5;
   justify-content: center;
   align-items: center;

@@ -101,6 +101,7 @@ function LoginForm(props) {
         setError("");
         setLoading(true);
         await signup(emailRef.current.value, passwordRef.current.value);
+        setLoginClicked(false);
       } catch {
         setError("Failed to create an account.");
       }
@@ -109,6 +110,7 @@ function LoginForm(props) {
         setError("");
         setLoading(true);
         await login(emailRef.current.value, passwordRef.current.value);
+        setLoginClicked(false);
       } catch {
         setError("Failed to sign in.");
       }

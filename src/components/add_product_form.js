@@ -69,7 +69,7 @@ function AddProductForm(props) {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const { allProducts, setAllProducts } = useAllProductsContext();
+  // const { allProducts, setAllProducts } = useAllProductsContext();
 
   // const getIdFromLastProduct = () => {
   //   return allProducts.map((p) => p.id).sort((a, b) => a + b)[0];

@@ -132,12 +132,15 @@ function Navbar(props) {
       <StyledMenu onClick={() => setIsActive(!isActive)} />
       <StyledLogo to="/">Web Shop</StyledLogo>
       <div>
-        <StyledCount count={String(cart.length)}>
-          {cart.length > 0 && <span>{cart.length}</span>}
-          <StyledLink to="/checkout">
-            <StyledShoppingCart onClick={() => setIsCartActive(true)} />
-          </StyledLink>
-        </StyledCount>
+        {currentUser && (
+          <StyledCount count={String(cart.length)}>
+            {cart.length > 0 && <span>{cart.length}</span>}
+
+            <StyledLink to="/checkout">
+              <StyledShoppingCart onClick={() => setIsCartActive(true)} />
+            </StyledLink>
+          </StyledCount>
+        )}
         {!currentUser ? (
           <StyledButton onClick={() => setLoginClicked(!loginClicked)}>
             Login
@@ -146,9 +149,14 @@ function Navbar(props) {
           <StyledButton onClick={() => handleLogout()}>Logout</StyledButton>
         )}
       </div>
-      <StyledAddButton onClick={() => setAddProductClicked(!addProductClicked)}>
-        +
-      </StyledAddButton>
+      {currentUser && (
+        <StyledAddButton
+          onClick={() => setAddProductClicked(!addProductClicked)}
+        >
+          +
+        </StyledAddButton>
+      )}
+
       <Sidebar isActive={isActive} setIsActive={setIsActive} />
       <LoginForm
         loginClicked={loginClicked}

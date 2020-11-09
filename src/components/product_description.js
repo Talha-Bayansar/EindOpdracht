@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledProduct = styled.section`
   display: ${(props) => (props.visible ? "block" : "none")};
@@ -73,6 +74,7 @@ const StyledOverlay = styled.div`
 
 function ProductDescription(props) {
   const { product, isActive, setIsActive, addToCart } = props;
+  const { currentUser } = useAuthContext();
 
   return (
     <StyledProduct visible={isActive}>
@@ -85,7 +87,15 @@ function ProductDescription(props) {
           <span>Category:</span> {product.category}
         </span>
         <div>
-          <button onClick={() => addToCart(product)}>
+          <button
+            onClick={() => {
+              if (currentUser !== null) {
+                addToCart(product);
+              } else {
+                alert("You must log in first.");
+              }
+            }}
+          >
             {product.price}&euro;
           </button>
         </div>

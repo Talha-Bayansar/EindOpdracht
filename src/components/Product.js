@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductDescription from "./product_description";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledProduct = styled.div`
   background-color: #eaeaea;
@@ -56,6 +57,7 @@ const StyledDiv = styled.div`
 function Product(props) {
   const { product, addToCart } = props;
   const [isActive, setIsActive] = useState(false);
+  const { currentUser } = useAuthContext();
 
   return (
     <StyledProduct>
@@ -69,7 +71,15 @@ function Product(props) {
       <div>
         <h2>{product.title}</h2>
         <StyledDiv>
-          <button onClick={() => addToCart(product)}>
+          <button
+            onClick={() => {
+              if (currentUser !== null) {
+                addToCart(product);
+              } else {
+                alert("You must log in first.");
+              }
+            }}
+          >
             {product.price}&euro;
           </button>
           <span onClick={() => setIsActive(!isActive)}>See more...</span>

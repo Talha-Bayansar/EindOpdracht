@@ -40,8 +40,6 @@ const StyledSection = styled.section`
 `;
 
 function ContentProducts(props) {
-  const { addToCart } = props;
-
   return (
     <StyledSection>
       <h1>Products</h1>

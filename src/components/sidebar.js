@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const StyledSidebar = styled.div`
   position: fixed;
@@ -79,9 +80,10 @@ function Sidebar(props) {
       <StyledSidebar visible={isActive}>
         <StyledButton onClick={() => setIsActive(!isActive)}>x</StyledButton>
         <div>
-          <a href="/">Home</a>
-          <a href="/">Products</a>
-          <a href="/">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/products">Products</Link>
+          <Link to="/myproducts">My Products</Link>
+          <Link to="/">Contact</Link>
         </div>
       </StyledSidebar>
     </StyledSection>

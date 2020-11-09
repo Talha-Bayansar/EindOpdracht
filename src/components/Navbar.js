@@ -6,6 +6,7 @@ import Sidebar from "./sidebar";
 import LoginForm from "./login_form";
 import AddProductForm from "./add_product_form";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../contexts/auth_context";
 
 const StyledNavbar = styled.div`
   position: fixed;
@@ -110,6 +111,21 @@ function Navbar(props) {
   const [loginClicked, setLoginClicked] = useState(false);
   const { cart } = useCartContext();
   const [addProductClicked, setAddProductClicked] = useState(false);
+  const { currentUser, logout } = useAuthContext();
+  const [error, setError] = useState("");
+
+  const handleLogout = async () => {
+    setError("");
+
+    try {
+      await logout();
+    } catch {
+      setError("Failed to logout.");
+      console.log(error);
+    }
+  };
+
+  currentUser ? console.log(currentUser.email) : console.log("Guest");
 
   return (
     <StyledNavbar>
@@ -122,9 +138,13 @@ function Navbar(props) {
             <StyledShoppingCart onClick={() => setIsCartActive(true)} />
           </StyledLink>
         </StyledCount>
-        <StyledButton onClick={() => setLoginClicked(!loginClicked)}>
-          Login
-        </StyledButton>
+        {!currentUser ? (
+          <StyledButton onClick={() => setLoginClicked(!loginClicked)}>
+            Login
+          </StyledButton>
+        ) : (
+          <StyledButton onClick={() => handleLogout()}>Logout</StyledButton>
+        )}
       </div>
       <StyledAddButton onClick={() => setAddProductClicked(!addProductClicked)}>
         +

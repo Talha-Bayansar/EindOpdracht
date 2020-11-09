@@ -15,6 +15,10 @@ export default function AuthProvider(props) {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
+  const logout = () => {
+    return auth.signOut();
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -28,6 +32,7 @@ export default function AuthProvider(props) {
     currentUser,
     signup,
     login,
+    logout,
   };
 
   return (

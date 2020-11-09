@@ -20,8 +20,7 @@ const StyledApp = styled.div`
 
 function ProvidedApp() {
   const { cart, setCart } = useCartContext();
-  const { useProducts } = useAllProductsContext();
-  const allProducts = useProducts();
+  const { allProducts } = useAllProductsContext();
   const isInCart = (product) => {
     return product && cart.find((p) => p.id === product.id);
   };

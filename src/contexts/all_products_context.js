@@ -18,7 +18,7 @@ export function AllProductsProvider(props) {
     const [allProducts, setAllProducts] = useState([]);
 
     useEffect(() => {
-      firebase
+      const unsubscribe = firebase
         .firestore()
         .collection("products")
         .onSnapshot((snapshot) => {
@@ -29,17 +29,21 @@ export function AllProductsProvider(props) {
 
           setAllProducts(newProducts);
         });
+
+      return () => unsubscribe();
     }, []);
 
     return allProducts;
   };
 
+  const allProducts = useProducts();
+
   const api = useMemo(
-    () => ({ /*allProducts, setAllProducts,*/ useProducts }),
+    () => ({ allProducts /*, setAllProducts,*/ /*useProducts*/ }),
     [
-      // allProducts,
+      allProducts,
       // setAllProducts,
-      useProducts,
+      // useProducts,
     ]
   );
 

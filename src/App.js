@@ -12,7 +12,7 @@ import {
 } from "./contexts/all_products_context";
 import Product from "./components/product";
 import { Switch, Route, HashRouter } from "react-router-dom";
-import AuthProvider from "./contexts/auth_context";
+import AuthProvider, { useAuthContext } from "./contexts/auth_context";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -21,6 +21,7 @@ const StyledApp = styled.div`
 function ProvidedApp() {
   const { cart, setCart } = useCartContext();
   const { allProducts } = useAllProductsContext();
+  const { currentUser } = useAuthContext();
   const isInCart = (product) => {
     return product && cart.find((p) => p.id === product.id);
   };
@@ -42,6 +43,9 @@ function ProvidedApp() {
     <HashRouter basename="/">
       <StyledApp>
         <Navbar />
+        <h2>
+          Logged in as: <span>{currentUser ? currentUser.email : "Guest"}</span>
+        </h2>
         <Switch>
           <Route path="/checkout">
             <Shoppingcart deleteFromCart={deleteFromCart} />

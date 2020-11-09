@@ -13,6 +13,8 @@ import {
 import Product from "./components/product";
 import { Switch, Route, HashRouter } from "react-router-dom";
 import AuthProvider, { useAuthContext } from "./contexts/auth_context";
+import ProductsPage from "./pages/products_page";
+import MyProductsPage from "./pages/my_products_page";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -49,6 +51,12 @@ function ProvidedApp() {
         <Switch>
           <Route path="/checkout">
             <Shoppingcart deleteFromCart={deleteFromCart} />
+          </Route>
+          <Route path={"/products"}>
+            <ProductsPage />
+          </Route>
+          <Route path={"/myproducts"}>
+            <MyProductsPage />
           </Route>
           <Route path={["/", "/home"]}>
             <ContentProducts>

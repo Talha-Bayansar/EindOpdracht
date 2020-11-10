@@ -68,6 +68,28 @@ const StyledLoginForm = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 300px;
+      height: 175px;
+      margin-left: -150px;
+      margin-top: -87.5px;
+    }
+
+    & > form {
+      & > input {
+        padding: 5px;
+        border-radius: 2.5px;
+        font-size: 0.75rem;
+      }
+
+      & button {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+    }
+  }
 `;
 
 const StyledButtons = styled.div`

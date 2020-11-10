@@ -45,6 +45,12 @@ const StyledSection = styled.section`
     font-size: 2.5rem;
     margin: 3rem;
   }
+
+  @media screen and (max-width: 500px) {
+    & > h1 {
+      font-size: 1.75rem;
+    }
+  }
 `;
 
 function ContentProducts(props) {

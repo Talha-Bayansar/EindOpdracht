@@ -38,6 +38,24 @@ const StyledForm = styled.form`
     border: 1px solid black;
     width: 70%;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 300px;
+      height: 400px;
+      margin-left: -150px;
+      margin-top: -200px;
+    }
+
+    & input,
+    & textarea {
+      padding: 5px 5px;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      border: 1px solid black;
+      width: 70%;
+    }
+  }
 `;
 
 const StyledButtons = styled.div`
@@ -58,6 +76,13 @@ const StyledButtons = styled.div`
     &:hover {
       background-color: #6199bb;
       color: white;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    & button {
+      padding: 5px 10px;
+      font-size: 0.8rem;
     }
   }
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import ShoppingcartItem from "./shopping_cart_item";
 import { useCartContext } from "../contexts/cart_context";
+import ShoppingCartGrid from "./shopping_cart_grid";
 
 const StyledShoppingcart = styled.div`
   padding: 1rem;
@@ -27,13 +28,15 @@ function Shoppingcart(props) {
         {cart.length === 0 ? (
           <h2>Shopping cart is empty.</h2>
         ) : (
-          cart.map((p) => (
-            <ShoppingcartItem
-              deleteFromCart={deleteFromCart}
-              key={p.id}
-              product={p}
-            />
-          ))
+          <ShoppingCartGrid>
+            {cart.map((p) => (
+              <ShoppingcartItem
+                deleteFromCart={deleteFromCart}
+                key={p.id}
+                product={p}
+              />
+            ))}
+          </ShoppingCartGrid>
         )}
       </div>
     </StyledShoppingcart>

@@ -5,7 +5,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { products_data } from "../data/products_data";
 import "firebase/firestore";
 import firebase from "../services/firebase";
 import { useAuthContext } from "./auth_context";
@@ -13,8 +12,6 @@ import { useAuthContext } from "./auth_context";
 const AllProductsContext = createContext();
 
 export function AllProductsProvider(props) {
-  // const [allProducts, setAllProducts] = useState(products_data);
-
   const { currentUser } = useAuthContext();
 
   const useProducts = () => {
@@ -55,15 +52,10 @@ export function AllProductsProvider(props) {
 
   const myProducts = useMyProducts();
 
-  const api = useMemo(
-    () => ({ allProducts, myProducts /*, setAllProducts,*/ /*useProducts*/ }),
-    [
-      allProducts,
-      myProducts,
-      // setAllProducts,
-      // useProducts,
-    ]
-  );
+  const api = useMemo(() => ({ allProducts, myProducts }), [
+    allProducts,
+    myProducts,
+  ]);
 
   return (
     <AllProductsContext.Provider value={api}>

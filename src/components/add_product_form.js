@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { useAllProductsContext } from "../contexts/all_products_context";
 import "firebase/firestore";
 import firebase from "../services/firebase";
 import { useAuthContext } from "../contexts/auth_context";
@@ -71,11 +70,6 @@ function AddProductForm(props) {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const { currentUser } = useAuthContext();
-  // const { allProducts, setAllProducts } = useAllProductsContext();
-
-  // const getIdFromLastProduct = () => {
-  //   return allProducts.map((p) => p.id).sort((a, b) => a + b)[0];
-  // };
 
   const createProduct = () => {
     if (
@@ -107,36 +101,7 @@ function AddProductForm(props) {
       alert("Every field must be filled.");
     }
   };
-  // const createProduct = () => {
-  //   if (
-  //     title !== "" &&
-  //     url !== "" &&
-  //     category !== "" &&
-  //     price !== "" &&
-  //     description !== ""
-  //   ) {
-  //     const product = {
-  //       id: getIdFromLastProduct() + 1,
-  //       title: title,
-  //       imgUrl: url,
-  //       price: price,
-  //       description: description,
-  //       category: category,
-  //     };
-  //     console.log(product.id);
-  //     setAllProducts([...allProducts, product]);
-  //   } else {
-  //     alert("Every field must be filled.");
-  //   }
-  // };
 
-  // const clearInputFields = () => {
-  //   setUrl("");
-  //   setTitle("");
-  //   setPrice("");
-  //   setDescription("");
-  //   setCategory("");
-  // };
   return (
     <StyledProductForm visible={addProductClicked}>
       <StyledForm onSubmit={(event) => event.preventDefault()}>
@@ -177,7 +142,6 @@ function AddProductForm(props) {
             onClick={() => {
               createProduct();
               setAddProductClicked(false);
-              // clearInputFields();
             }}
           >
             Confirm

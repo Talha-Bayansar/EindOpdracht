@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
+import React from "react";
 import ContentProducts from "../components/content_products";
 import { useAllProductsContext } from "../contexts/all_products_context";
-import { useAuthContext } from "../contexts/auth_context";
 import Product from "../components/product";
 
 function MyProductsPage() {
   const { myProducts } = useAllProductsContext();
-  const { currentUser } = useAuthContext();
 
   return (
     <>

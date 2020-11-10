@@ -7,6 +7,10 @@ const StyledHeader = styled.div`
   justify-items: center;
   align-items: center;
   width: 100%;
+
+  & > h3:nth-child(1) {
+    width: 100%;
+  }
 `;
 
 function ShoppingCartHeader() {

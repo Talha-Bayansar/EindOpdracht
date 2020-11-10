@@ -9,13 +9,15 @@ const StyledItem = styled.div`
   align-items: center;
   width: 100%;
 
-  & > h1 {
+  & > h3 {
     display: block;
-    padding-bottom: 5px;
+    height: auto;
+    width: 100%;
   }
 
   & > input {
-    max-width: 150px;
+    max-width: 50px;
+    border-radius: 5px;
   }
 
   & button {
@@ -34,7 +36,7 @@ function ShoppingcartItem(props) {
 
   return (
     <StyledItem>
-      <h1>{product.title}</h1>
+      <h3>{product.title}</h3>
       <span>{product.price}&euro;</span>
       <input
         onChange={(e) => setAmount(e.target.value)}

@@ -35,7 +35,7 @@ function ShoppingcartItem(props) {
   return (
     <StyledItem>
       <h1>{product.title}</h1>
-      <h1>{product.price}</h1>
+      <span>{product.price}&euro;</span>
       <input
         onChange={(e) => setAmount(e.target.value)}
         type="number"
@@ -43,7 +43,7 @@ function ShoppingcartItem(props) {
         step={1}
         defaultValue={1}
       />
-      <span>{product.price * amount}</span>
+      <span>{product.price * amount}&euro;</span>
       <button onClick={() => deleteFromCart(product)}>
         <DeleteIcon />
       </button>

@@ -39,7 +39,7 @@ function ProvidedApp() {
           </Route>
           <PrivateRoute path={"/myproducts"} component={MyProductsPage} />
           <Route path={["/", "/home"]}>
-            <ContentProducts title={"Products"}>
+            <ContentProducts title={"Latest Products"}>
               {allProducts
                 .slice(allProducts.length - 3, allProducts.length)
                 .map((p) => <Product key={p.id} product={p} />)

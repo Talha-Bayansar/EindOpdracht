@@ -33,19 +33,23 @@ const StyledItem = styled.div`
 function ShoppingcartItem(props) {
   const { product, deleteFromCart } = props;
   const [amount, setAmount] = useState(1);
-
   return (
     <StyledItem>
       <h3>{product.title}</h3>
       <span>{product.price}&euro;</span>
       <input
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => {
+          setAmount(e.target.value);
+        }}
         type="number"
         min={1}
         step={1}
         defaultValue={1}
       />
-      <span>{product.price * amount}&euro;</span>
+      <span>
+        {amount * product.price}
+        &euro;
+      </span>
       <button onClick={() => deleteFromCart(product)}>
         <DeleteIcon />
       </button>

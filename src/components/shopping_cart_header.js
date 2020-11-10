@@ -11,6 +11,12 @@ const StyledHeader = styled.div`
   & > h3:nth-child(1) {
     width: 100%;
   }
+
+  @media screen and (max-width: 500px) {
+    & > h3 {
+      font-size: 0.75rem;
+    }
+  }
 `;
 
 function ShoppingCartHeader() {

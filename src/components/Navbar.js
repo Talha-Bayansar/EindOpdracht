@@ -52,6 +52,12 @@ const StyledLogo = styled(Link)`
   &:hover {
     color: #ccbdbd;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const StyledButton = styled.button`
@@ -68,6 +74,12 @@ const StyledButton = styled.button`
   &:hover {
     background-color: #6199bb;
     color: white;
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      margin-left: 10px;
+    }
   }
 `;
 

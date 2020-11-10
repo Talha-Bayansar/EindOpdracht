@@ -19,6 +19,16 @@ import PrivateRoute from "./components/private_route";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
+
+  @media screen and (max-width: 500px) {
+    & {
+      padding: 10vh 1rem 0 1rem;
+    }
+
+    & > h2 {
+      font-size: 1rem;
+    }
+  }
 `;
 
 function ProvidedApp() {

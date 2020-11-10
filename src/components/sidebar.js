@@ -67,6 +67,12 @@ const StyledSection = styled.section`
   transform: ${(props) =>
     props.visible ? "translateX(0%)" : "translateX(-100%)"};
   transition: transform 0.3s ease-in-out;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100vw;
+    }
+  }
 `;
 
 function Sidebar(props) {
@@ -82,10 +88,20 @@ function Sidebar(props) {
       <StyledSidebar visible={isActive}>
         <StyledButton onClick={() => setIsActive(!isActive)}>x</StyledButton>
         <div>
-          <Link to="/">Home</Link>
-          <Link to="/products">Products</Link>
-          {currentUser !== null && <Link to="/myproducts">My Products</Link>}
-          <Link to="/">Contact</Link>
+          <Link to="/" onClick={() => setIsActive(false)}>
+            Home
+          </Link>
+          <Link to="/products" onClick={() => setIsActive(false)}>
+            Products
+          </Link>
+          {currentUser !== null && (
+            <Link to="/myproducts" onClick={() => setIsActive(false)}>
+              My Products
+            </Link>
+          )}
+          <Link to="/" onClick={() => setIsActive(false)}>
+            Contact
+          </Link>
         </div>
       </StyledSidebar>
     </StyledSection>

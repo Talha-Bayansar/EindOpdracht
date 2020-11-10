@@ -28,6 +28,12 @@ const StyledItem = styled.div`
     font-weight: 600;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 0.75rem;
+    }
+  }
 `;
 
 function ShoppingcartItem(props) {

@@ -10,11 +10,23 @@ const StyledShoppingcart = styled.div`
   & h2 {
     margin-top: 3rem;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      padding: 0;
+    }
+  }
 `;
 
 const StyledHeader = styled.h1`
   font-size: 3rem;
   display: block;
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 2rem;
+    }
+  }
 `;
 
 function Shoppingcart(props) {

@@ -15,6 +15,7 @@ import { Switch, Route, HashRouter } from "react-router-dom";
 import AuthProvider, { useAuthContext } from "./contexts/auth_context";
 import ProductsPage from "./pages/products_page";
 import MyProductsPage from "./pages/my_products_page";
+import PrivateRoute from "./components/private_route";
 
 const StyledApp = styled.div`
   padding: 10vh 3rem 0 3rem;
@@ -44,9 +45,7 @@ function ProvidedApp() {
           <Route path={"/products"}>
             <ProductsPage />
           </Route>
-          <Route path={"/myproducts"}>
-            <MyProductsPage />
-          </Route>
+          <PrivateRoute path={"/myproducts"} component={MyProductsPage} />
           <Route path={["/", "/home"]}>
             <ContentProducts title={"Products"}>
               {allProducts.map((p) => (

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ProductDescription from "./product_description";
 import { useAuthContext } from "../contexts/auth_context";
+import { useCartContext } from "../contexts/cart_context";
 
 const StyledProduct = styled.div`
   background-color: #eaeaea;
@@ -55,7 +56,8 @@ const StyledDiv = styled.div`
 `;
 
 function Product(props) {
-  const { product, addToCart } = props;
+  const { product } = props;
+  const { addToCart } = useCartContext();
   const [isActive, setIsActive] = useState(false);
   const { currentUser } = useAuthContext();
 

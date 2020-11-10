@@ -24,17 +24,6 @@ function ProvidedApp() {
   const { cart, setCart } = useCartContext();
   const { allProducts } = useAllProductsContext();
   const { currentUser } = useAuthContext();
-  const isInCart = (product) => {
-    return product && cart.find((p) => p.id === product.id);
-  };
-
-  const addToCart = (product) => {
-    let newArray = cart;
-    if (!isInCart(product)) {
-      newArray = [...cart, product];
-    }
-    setCart(newArray);
-  };
 
   const deleteFromCart = (product) => {
     let newArray = cart.filter((p) => p.id !== product.id);
@@ -59,9 +48,9 @@ function ProvidedApp() {
             <MyProductsPage />
           </Route>
           <Route path={["/", "/home"]}>
-            <ContentProducts>
+            <ContentProducts title={"Products"}>
               {allProducts.map((p) => (
-                <Product addToCart={addToCart} key={p.id} product={p} />
+                <Product key={p.id} product={p} />
               ))}
             </ContentProducts>
             <Footer />

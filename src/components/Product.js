@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 import ProductDescription from "./product_description";
 import { useAuthContext } from "../contexts/auth_context";
 import { useCartContext } from "../contexts/cart_context";
+import DeleteIcon from "@material-ui/icons/Delete";
+import "firebase/firestore";
+import firebase from "../services/firebase";
 
 const StyledProduct = styled.div`
   background-color: #eaeaea;
@@ -61,6 +64,10 @@ function Product(props) {
   const [isActive, setIsActive] = useState(false);
   const { currentUser } = useAuthContext();
 
+  const deleteProduct = (id) => {
+    firebase.firestore().collection("products").doc(id).delete();
+  };
+
   return (
     <StyledProduct>
       <ProductDescription
@@ -85,6 +92,11 @@ function Product(props) {
             {product.price}&euro;
           </button>
           <span onClick={() => setIsActive(!isActive)}>See more...</span>
+          {currentUser && currentUser.uid === product.uid && (
+            <button onClick={() => deleteProduct(product.id)}>
+              <DeleteIcon />
+            </button>
+          )}
         </StyledDiv>
       </div>
     </StyledProduct>

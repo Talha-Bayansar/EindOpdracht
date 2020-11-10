@@ -8,6 +8,11 @@ const StyledContentProducts = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem;
 
+  & > span {
+    position: absolute;
+    margin-left: 3.5rem;
+  }
+
   @media screen and (max-width: 1280px) {
     & {
       grid-template-columns: 1fr 1fr 1fr;

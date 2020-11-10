@@ -8,11 +8,14 @@ import React, {
 import { products_data } from "../data/products_data";
 import "firebase/firestore";
 import firebase from "../services/firebase";
+import { useAuthContext } from "./auth_context";
 
 const AllProductsContext = createContext();
 
 export function AllProductsProvider(props) {
   // const [allProducts, setAllProducts] = useState(products_data);
+
+  const { currentUser } = useAuthContext();
 
   const useProducts = () => {
     const [allProducts, setAllProducts] = useState([]);
@@ -38,10 +41,23 @@ export function AllProductsProvider(props) {
 
   const allProducts = useProducts();
 
+  const useMyProducts = () => {
+    const [myProducts, setMyProducts] = useState([]);
+
+    useEffect(() => {
+      setMyProducts(allProducts.filter((p) => p.uid === currentUser.uid));
+    }, [allProducts]);
+
+    return myProducts;
+  };
+
+  const myProducts = useMyProducts();
+
   const api = useMemo(
-    () => ({ allProducts /*, setAllProducts,*/ /*useProducts*/ }),
+    () => ({ allProducts, myProducts /*, setAllProducts,*/ /*useProducts*/ }),
     [
       allProducts,
+      myProducts,
       // setAllProducts,
       // useProducts,
     ]

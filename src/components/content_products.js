@@ -10,7 +10,10 @@ const StyledContentProducts = styled.div`
 
   & > span {
     position: absolute;
-    margin-left: 3.5rem;
+    width: 50%;
+    text-align: center;
+    display: block;
+    margin-left: calc(25% - 3rem);
   }
 
   @media screen and (max-width: 1280px) {

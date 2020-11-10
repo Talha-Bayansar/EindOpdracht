@@ -83,12 +83,6 @@ function Product(props) {
 
   return (
     <StyledProduct>
-      <ProductDescription
-        isActive={isActive}
-        setIsActive={setIsActive}
-        addToCart={addToCart}
-        product={product}
-      />
       <StyledImg>
         <img src={product.imgUrl} alt={product.title} />
       </StyledImg>
@@ -114,6 +108,12 @@ function Product(props) {
           )}
         </StyledDiv>
       </div>
+      <ProductDescription
+        isActive={isActive}
+        setIsActive={setIsActive}
+        addToCart={addToCart}
+        product={product}
+      />
     </StyledProduct>
   );
 }

@@ -32,6 +32,12 @@ const StyledMedia = styled.div`
     color: #ccbdbd;
     cursor: pointer;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 40%;
+    }
+  }
 `;
 
 const StyledLinks = styled.div`
@@ -44,6 +50,12 @@ const StyledLinks = styled.div`
 
   & > a:hover {
     color: #ccbdbd;
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 80%;
+    }
   }
 `;
 

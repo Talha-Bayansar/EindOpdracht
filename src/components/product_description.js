@@ -10,6 +10,7 @@ const StyledProduct = styled.section`
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 `;
 
 const StyledProductDescription = styled.div`
@@ -59,6 +60,15 @@ const StyledProductDescription = styled.div`
         background-color: #6199bb;
         color: white;
       }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 300px;
+      height: 600px;
+      margin-left: -165px;
+      margin-top: -300px;
     }
   }
 `;

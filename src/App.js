@@ -22,14 +22,8 @@ const StyledApp = styled.div`
 `;
 
 function ProvidedApp() {
-  const { cart, setCart } = useCartContext();
   const { allProducts } = useAllProductsContext();
   const { currentUser } = useAuthContext();
-
-  const deleteFromCart = (product) => {
-    let newArray = cart.filter((p) => p.id !== product.id);
-    setCart(newArray);
-  };
 
   return (
     <HashRouter basename="/">
@@ -39,9 +33,7 @@ function ProvidedApp() {
           Logged in as: <span>{currentUser ? currentUser.email : "Guest"}</span>
         </h2>
         <Switch>
-          <Route path="/checkout">
-            <Shoppingcart deleteFromCart={deleteFromCart} />
-          </Route>
+          <PrivateRoute path={"/checkout"} component={Shoppingcart} />
           <Route path={"/products"}>
             <ProductsPage />
           </Route>

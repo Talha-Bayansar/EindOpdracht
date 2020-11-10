@@ -18,7 +18,7 @@ const StyledHeader = styled.h1`
 `;
 
 function Shoppingcart(props) {
-  const { deleteFromCart } = props;
+  const { deleteFromCart } = useCartContext();
   const { cart, isCartActive } = useCartContext();
 
   return (

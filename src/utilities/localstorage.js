@@ -1,9 +1,11 @@
 export function setLocalStorage(key, value) {
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 export function getFromLocalStorage(key) {
-  return localStorage.getItem(key);
+  return localStorage.getItem(key) !== null
+    ? JSON.parse(localStorage.getItem(key))
+    : [];
 }
 
 export function removeFromLocalStorage(key) {

@@ -12,18 +12,31 @@ const StyledProduct = styled.div`
   box-shadow: 0px 0px 5px 2px black;
   border-radius: 5px;
 
-  & > img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 5px 5px 0 0;
-  }
-
   & > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 1rem;
+  }
+`;
+
+const StyledImg = styled.section`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  & > img {
+    position: absolute;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
   }
 `;
 
@@ -76,7 +89,9 @@ function Product(props) {
         addToCart={addToCart}
         product={product}
       />
-      <img src={product.imgUrl} alt={product.title} />
+      <StyledImg>
+        <img src={product.imgUrl} alt={product.title} />
+      </StyledImg>
       <div>
         <h2>{product.title}</h2>
         <StyledDiv>

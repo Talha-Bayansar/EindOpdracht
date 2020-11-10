@@ -16,7 +16,7 @@ const CartContext = createContext();
 
 export function CartProvider(props) {
   const { currentUser } = useAuthContext();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(getFromLocalStorage(currentUser));
   const [isCartActive, setIsCartActive] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function CartProvider(props) {
         setCart(data);
       }
     }
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     if (currentUser) {

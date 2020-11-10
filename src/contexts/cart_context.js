@@ -45,7 +45,6 @@ export function CartProvider(props) {
 
   useEffect(() => {
     currentUser ? console.log(currentUser.uid) : console.log("null");
-    console.log(cart);
   }, [currentUser, cart]);
 
   const addToCart = (product) => {

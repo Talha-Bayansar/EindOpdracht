@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ContentProducts from "./components/content_products";
 import Navbar from "./components/navbar";
@@ -40,9 +40,10 @@ function ProvidedApp() {
           <PrivateRoute path={"/myproducts"} component={MyProductsPage} />
           <Route path={["/", "/home"]}>
             <ContentProducts title={"Products"}>
-              {allProducts.map((p) => (
-                <Product key={p.id} product={p} />
-              ))}
+              {allProducts
+                .slice(allProducts.length - 3, allProducts.length)
+                .map((p) => <Product key={p.id} product={p} />)
+                .reverse()}
             </ContentProducts>
             <Footer />
           </Route>

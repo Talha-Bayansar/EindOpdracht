@@ -46,7 +46,7 @@ export function AllProductsProvider(props) {
 
     useEffect(() => {
       setMyProducts(allProducts.filter((p) => p.uid === currentUser.uid));
-    }, [allProducts]);
+    }, [allProducts, currentUser]);
 
     return myProducts;
   };
